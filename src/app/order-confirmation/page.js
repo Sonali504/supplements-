@@ -9,21 +9,27 @@ export default function OrderConfirmation() {
 
   const [orderDetails, setOrderDetails] = useState(null);
   const [phoneError, setPhoneError] = useState(false);
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
-    const storedOrder = localStorage.getItem("orderDetails");
-    if (storedOrder) {
-      const parsedOrder = JSON.parse(storedOrder);
-      setOrderDetails(parsedOrder);
+    if (typeof window !== "undefined") { // Ensure it's client-side
+      const storedOrder = localStorage.getItem("orderDetails");
+      if (storedOrder) {
+        const parsedOrder = JSON.parse(storedOrder);
+        setOrderDetails(parsedOrder);
 
-      // Check if phone number is exactly 10 digits
-      if (!/^\d{10}$/.test(parsedOrder.userData.phone)) {
-        setPhoneError(true);
+        // Validate phone number (10 digits)
+        if (!/^\d{10}$/.test(parsedOrder.userData.phone)) {
+          setPhoneError(true);
+        }
       }
+      setLoading(false); // Stop loading
     }
   }, []);
 
-  if (!orderDetails) return <p className="text-center">Loading order details...</p>;
+  if (loading) return <p className="text-center">Loading order details...</p>; // Prevent errors before data loads
+
+  if (!orderDetails) return <p className="text-center text-red-600">Order not found. Please try again.</p>;
 
   const handlePayment = () => {
     alert("Redirecting to Payment Gateway...");
@@ -44,10 +50,8 @@ export default function OrderConfirmation() {
         <h2 className="text-xl font-semibold mb-2">Customer Details</h2>
         <p><strong>Name:</strong> {orderDetails.userData.fullName}</p>
         <p><strong>Email:</strong> {orderDetails.userData.email}</p>
-        
         <p><strong>Phone:</strong> {orderDetails.userData.phone}</p>
         {phoneError && <p className="text-red-600 font-semibold">Invalid phone number! Must be 10 digits.</p>}
-
         <p><strong>Address:</strong> {orderDetails.userData.address}</p>
       </div>
 
@@ -72,7 +76,7 @@ export default function OrderConfirmation() {
         <p className="text-xl font-bold mt-2">Total: ₹{orderDetails.total}</p>
       </div>
 
-      {/* Buttons in a Single Row */}
+      {/* Buttons */}
       <div className="mt-6 flex justify-center space-x-4">
         <button 
           onClick={() => router.push("/products")} 
