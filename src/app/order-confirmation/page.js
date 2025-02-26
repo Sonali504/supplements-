@@ -9,27 +9,28 @@ export default function OrderConfirmation() {
 
   const [orderDetails, setOrderDetails] = useState(null);
   const [phoneError, setPhoneError] = useState(false);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (typeof window !== "undefined") { // Ensure it's client-side
+    if (typeof window !== "undefined") { // Only run on client-side
       const storedOrder = localStorage.getItem("orderDetails");
       if (storedOrder) {
         const parsedOrder = JSON.parse(storedOrder);
         setOrderDetails(parsedOrder);
 
-        // Validate phone number (10 digits)
-        if (!/^\d{10}$/.test(parsedOrder.userData.phone)) {
+        if (!/^\d{10}$/.test(parsedOrder?.userData?.phone)) {
           setPhoneError(true);
         }
       }
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   }, []);
 
-  if (loading) return <p className="text-center">Loading order details...</p>; // Prevent errors before data loads
+  if (loading) return <p className="text-center">Loading order details...</p>;
 
-  if (!orderDetails) return <p className="text-center text-red-600">Order not found. Please try again.</p>;
+  if (!orderDetails) {
+    return <p className="text-center text-red-600">Order not found. Please try again.</p>;
+  }
 
   const handlePayment = () => {
     alert("Redirecting to Payment Gateway...");
@@ -88,7 +89,7 @@ export default function OrderConfirmation() {
         <button 
           onClick={handlePayment} 
           className="bg-green-600 text-white py-2 px-6 rounded-md"
-          disabled={phoneError} // Disable payment if phone number is invalid
+          disabled={phoneError}
         >
           Pay Now
         </button>
