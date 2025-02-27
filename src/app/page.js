@@ -107,7 +107,7 @@ export default function Home() {
   const brands = [
     { name: "Rasayanam", image: "/images/logo1.jpg" },
     { name: "Sweetmate", image: "/images/logo2.jpg" },
-    { name: "Proquest", image: "/images/logo3.jpg" },
+    { name: "Proquest", image: "/images/logo1.jpg" },
     { name: "Pure Farms", image: "/images/logo2.jpg" },
     { name: "Alpino", image: "/images/logo1.jpg" },
     { name: "Nourish Organics", image: "/images/logo2.jpg" },
