@@ -311,6 +311,17 @@ export default function Home() {
           )}
         </div>
       </section>
+      
+      {/* {Advertisment} */}
+      <section className="py-8">
+        <div className="mx-auto px-4">
+          <img
+            src="/images/advertisment.jpg"
+            alt="Advertisement"
+            className="w-full rounded-lg shadow-lg"
+          />
+        </div>
+      </section>
 
       {/* Limited Time Deals - Responsive Grid */}
       <section className="py-12 text-center bg-yellow-100">
