@@ -84,104 +84,121 @@ export default function Home() {
           <Image src="/images/protein2.jpg" alt="Protein Supplements" width={600} height={450} className="object-cover rounded-lg w-[250px] md:w-[400px]" priority />
         </div>
       </section>
-      <section className="py-12">
-      {/* Section Heading */}
-      <div className="px-4 mb-6">
-        <h2 className="text-2xl font-bold text-left">Best Selling Products</h2>
-      </div>
+      
+      {/* {Best Selling product} */}
+      <section className="py-12 bg-yellow-50">
+        {/* Section Heading */}
+        <div className="px-4 mb-6">
+          <h2 className="text-2xl font-bold text-left">Best Selling Products</h2>
+        </div>
 
-      {/* Horizontal Scrollable Product Row */}
-      <div className="flex space-x-6 overflow-x-auto scrollbar-hide px-4">
-        {products.slice(0, 10).length > 0 ? (
-          products.slice(0, 10).map((product) => (
-            <div
-              key={product.id}
-              className="relative min-w-[250px] border p-4 rounded-lg shadow-md flex-shrink-0"
-            >
-              {/* Discount Badge */}
-              {product.discount && (
-                <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-                  {product.discount}% OFF
-                </span>
-              )}
-
-              {/* Product Image (clickable to open detail page) */}
-              {product.image && (
+        {/* Scrollable Product Row */}
+        <div className="px-4 overflow-x-auto w-full bg-white">
+          <div className="flex space-x-6 scrollbar-hide overflow-x-scroll w-max">
+            {products.slice(0, 10).length > 0 ? (
+              products.slice(0, 10).map((product) => (
                 <div
-                  className="cursor-pointer"
-                  onClick={() => router.push(`/product/${product.id}`)}
+                  key={product.id}
+                  className="relative min-w-[250px] border p-4 rounded-lg shadow-md flex-shrink-0"
                 >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={250}
-                    height={200}
-                    className="w-full h-40 object-contain rounded-md"
-                  />
+                  {/* Discount Badge */}
+                  {product.discount && (
+                    <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                      {product.discount}% OFF
+                    </span>
+                  )}
+
+                  {/* Product Image */}
+                  {product.image && (
+                    <div
+                      className="cursor-pointer "
+                      onClick={() => router.push(`/product/${product.id}`) } 
+                    >
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={250}
+                        height={200}
+                        className="w-full h-40 object-contain rounded-md"
+                      />
+                    </div>
+                  )}
+
+                  {/* Product Details */}
+                  <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xl font-bold text-green-600">
+                      ₹{product.price}
+                    </span>
+                    {product.oldPrice && (
+                      <span className="text-sm text-gray-500 line-through">
+                        ₹{product.oldPrice}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center mt-1">
+                    <span className="text-yellow-500">⭐ {product.rating}</span>
+                  </div>
+
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={() => {
+                      addToCart(product);
+                      router.push("/cart");
+                    }}
+                    className="mt-3 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
-              )}
+              ))
+            ) : (
+              <p className="text-center text-gray-500 w-full">
+                No products available.
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
 
-              {/* Product Details */}
-              <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
-              <div className="flex items-center space-x-2">
-                <span className="text-xl font-bold text-green-600">
-                  ₹{product.price}
-                </span>
-                {product.oldPrice && (
-                  <span className="text-sm text-gray-500 line-through">
-                    ₹{product.oldPrice}
-                  </span>
-                )}
-              </div>
-              <div className="flex items-center mt-1">
-                <span className="text-yellow-500">⭐ {product.rating}</span>
-              </div>
-
-              {/* Add to Cart Button */}
-              <button
-                onClick={() => {
-                  addToCart(product);
-                  router.push("/cart");
-                }}
-                className="mt-3 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500 w-full">No products available.</p>
-        )}
-      </div>
-    </section>
 
       {/* Banner Section */}
-      <section className="py-12">
-        <div className="flex justify-center items-center space-x-4">
+      <section className="py-12 px-4">
+        <div className="flex flex-wrap justify-center items-center gap-4">
           {["banner1.jpg", "banner2.jpg", "banner3.jpg"].map((banner, index) => (
-            <Image key={index} src={`/images/${banner}`} alt={`Banner ${index + 1}`} width={400} height={200} className="rounded-lg object-cover" />
+            <Image
+              key={index}
+              src={`/images/${banner}`}
+              alt={`Banner ${index + 1}`}
+              width={400}
+              height={200}
+              className="rounded-lg object-cover w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-auto"
+            />
           ))}
         </div>
       </section>
 
+
       {/* Category Selection Row */}
       <section className="py-6 text-center">
         <div className="max-w-screen-md mx-auto">
-          {/* Horizontally Scrollable Wrapper */}
-          <div className="flex justify-center overflow-x-auto space-x-4 px-4 scrollbar-hide">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-md whitespace-nowrap ${
-                  selectedCategory === cat
-                    ? "bg-yellow-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Scrollable Wrapper */}
+          <div className="overflow-x-auto w-full">
+            <div className="flex space-x-4 px-4 w-max scrollbar-hide">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-md whitespace-nowrap flex-shrink-0 ${
+                    selectedCategory === cat
+                      ? "bg-yellow-600 text-white"
+                      : "bg-white text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
