@@ -5,6 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -62,6 +66,43 @@ export default function Home() {
     updateCountdown();
     return () => clearInterval(timer);
   }, []);
+  const testimonials = [
+    {
+      id: 1,
+      name: "Jon Doe",
+      role: "Designer",
+      image: "/images/team1.jpg",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque semper elit non pellentesque.",
+    },
+    {
+      id: 2,
+      name: "Jane Doe",
+      role: "Designer",
+      image: "/images/team2.jpg",
+      text: "Fusce dictum ex mauris, porta semper mi malesuada dictum. Donec eu tellus laoreet, iaculis mi sit amet.",
+    },
+    {
+      id: 3,
+      name: "Alice Smith",
+      role: "Developer",
+      image: "/images/team3.jpg",
+      text: "Phasellus tempus bibendum massa ut tincidunt. Nam hendrerit ut tortor eget rutrum.",
+    },
+    {
+      id: 4,
+      name: "Michael Lee",
+      role: "Manager",
+      image: "/images/team4.jpg",
+      text: "Suspendisse eget lorem blandit, sodales est eget, efficitur erat. Pellentesque feugiat velit.",
+    },
+    {
+      id: 5,
+      name: "Emma Wilson",
+      role: "Marketer",
+      image: "/images/team2.jpg",
+      text: "Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam sit amet ipsum viverra.",
+    },
+  ];
 
   return (
     <main className="container mx-auto px-4 ">
@@ -86,7 +127,7 @@ export default function Home() {
       </section>
       
       {/* {Best Selling product} */}
-      <section className="py-12 bg-yellow-50">
+      <section className="py-12 bg-yellow-50 mt-5">
         {/* Section Heading */}
         <div className="px-4 mb-6">
           <h2 className="text-2xl font-bold text-left">Best Selling Products</h2>
@@ -163,7 +204,7 @@ export default function Home() {
 
 
       {/* Banner Section */}
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 mt-8">
         <div className="flex flex-wrap justify-center items-center gap-4">
           {["banner1.jpg", "banner2.jpg", "banner3.jpg"].map((banner, index) => (
             <Image
@@ -336,6 +377,47 @@ export default function Home() {
             );
           })}
         </div>
+      </section>
+
+      {/* {What client says} */}
+      <section className="py-12 mt-10">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6">Testimonials</h2>
+        </div>
+
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={20}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 2 },
+          }}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000 }}
+          modules={[Pagination, Autoplay]}
+          className="max-w-6xl mx-auto px-4"
+        >
+          {testimonials.map((testimonial) => (
+            <SwiperSlide key={testimonial.id}>
+              <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-start">
+                <span className="text-4xl text-gray-400">❝</span>
+                <p className="text-gray-700 mb-4">{testimonial.text}</p>
+                <div className="flex items-center mt-auto">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-14 h-14 rounded-full border"
+                  />
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold">{testimonial.name}</h3>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </section>
     </main>
   );
