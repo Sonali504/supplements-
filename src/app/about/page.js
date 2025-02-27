@@ -26,7 +26,7 @@ const teamMembers = [
 
 export default function AboutPage() {
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 mt-24">
 
         {/* Banner Section */}
         <section className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center flex items-center justify-center min-h-[400px] px-6 rounded-2xl">

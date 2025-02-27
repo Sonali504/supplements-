@@ -104,27 +104,52 @@ export default function Home() {
     },
   ];
 
+  const brands = [
+    { name: "Rasayanam", image: "/images/logo1.jpg" },
+    { name: "Sweetmate", image: "/images/logo2.jpg" },
+    { name: "Proquest", image: "/images/logo3.jpg" },
+    { name: "Pure Farms", image: "/images/logo2.jpg" },
+    { name: "Alpino", image: "/images/logo1.jpg" },
+    { name: "Nourish Organics", image: "/images/logo2.jpg" },
+  ];
+
+
   return (
-    <main className="container mx-auto px-4 ">
+    <main className="container mx-auto ">
       {/* Hero Section */}
-      <section className="relative h-[500px] flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-10 py-10">
-        <div className="w-full md:w-1/2 text-center md:text-left px-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900">
-            Discover the Best Supplements
-          </h1>
-          <p className="text-sm md:text-md italic text-gray-700 mt-2">
-            Boost your health with our premium products.
-          </p>
-          <Link href="/products">
-            <button className="mt-4 px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700">
-              Shop Now
-            </button>
-          </Link>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center">
-          <Image src="/images/protein2.jpg" alt="Protein Supplements" width={600} height={450} className="object-cover rounded-lg w-[250px] md:w-[400px]" priority />
+      <section className="relative flex items-center justify-center h-screen bg-gradient-to-b from-yellow-100 to-white px-6">
+        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          {/* Left Side - Text Content */}
+          <div className="text-center md:text-left">
+            <h1 className="text-5xl font-bold text-gray-900 leading-tight">
+              Deploy to the cloud <br /> with confidence
+            </h1>
+            <p className="mt-4 text-lg text-gray-600">
+            Power up your fitness with pure, high-quality protein for maximum performance and recovery.
+            </p>
+            <div className="mt-6 flex flex-row items-center justify-center md:justify-start gap-4">
+              <Link href="/products">
+                <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-yellow-600 hover:text-white">
+                  Shop Now
+                </button>
+              </Link>
+              <Link href="/about">
+                <button className="text-yellow-600 text-lg font-semibold hover:underline">
+                  Learn More →
+                </button>
+              </Link>
+            </div>
+
+          </div>
+
+          {/* Right Side - Image */}
+          <div className="flex justify-center">
+            <img src="/images/new.png" alt="Cloud Deployment" className="w-full max-w-md md:max-w-lg" />
+          </div>
         </div>
       </section>
+
+    
       
       {/* {Best Selling product} */}
       <section className="py-12 bg-yellow-50 mt-5">
@@ -389,6 +414,22 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      <section className="py-8 mt-10">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <h2 className="text-4xl font-extrabold text-center mb-6">New Brand Launches</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-items-center">
+          {brands.map((brand, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="w-30 h-29 flex items-center justify-center shadow-md p-3">
+                <img src={brand.image} alt={brand.name} className="w-full h-auto object-cover" />
+              </div>
+              <p className="text-sm font-medium mt-2">{brand.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* {What client says} */}
       <section className="py-12 mt-10">

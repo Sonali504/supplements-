@@ -46,7 +46,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+    <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mt-24">
       {/* Company, Address & Contact Information with Icons */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-6">
         <div>

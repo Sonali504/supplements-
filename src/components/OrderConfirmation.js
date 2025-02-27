@@ -29,7 +29,7 @@ export default function OrderConfirmation() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 text-center">
+    <div className="max-w-4xl mx-auto px-4 py-8 text-center mt-24">
       <h1 className="text-3xl font-bold text-green-600">🎉 Order Confirmed!</h1>
       <p className="text-lg">Thank you for your order. Your order has been placed successfully.</p>
 

@@ -67,7 +67,7 @@ export default function CartPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4 py-8 mt-24">
       <h1 className="text-3xl font-bold text-center mb-6">Shopping Cart</h1>
 
       {cart.length === 0 ? (

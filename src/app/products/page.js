@@ -71,7 +71,7 @@ export default function ProductList() {
   
 
   return (
-    <div className="max-w-8xl mx-auto p-4">
+    <div className="max-w-8xl mx-auto p-4 mt-24">
       {popupMessage && (
         <div className="fixed top-5 left-1/2 transform -translate-x-1/2 bg-black text-white py-2 px-4 rounded-md shadow-lg">
           {popupMessage}

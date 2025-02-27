@@ -58,7 +58,7 @@ export default function ProductDetail({ params }) {
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-24">
       <div className="p-6 max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
         {/* Left Side - Product Image */}
         <div className="md:w-1/2 flex justify-center">
