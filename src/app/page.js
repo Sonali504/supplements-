@@ -140,7 +140,7 @@ export default function Home() {
               products.slice(0, 10).map((product) => (
                 <div
                   key={product.id}
-                  className="relative min-w-[250px] border p-4 rounded-lg shadow-md flex-shrink-0"
+                  className="relative min-w-[250px] border p-4  shadow-md flex-shrink-0"
                 >
                   {/* Discount Badge */}
                   {product.discount && (
@@ -256,7 +256,7 @@ export default function Home() {
             filteredProducts.slice(0, 8).map((product) => (
               <div
                 key={product.id}
-                className="relative border p-4 rounded-lg shadow-md w-full max-w-xs"
+                className="relative border p-4  shadow-md w-full max-w-xs"
               >
                 {/* Discount Badge */}
                 {product.discount && (
@@ -313,18 +313,18 @@ export default function Home() {
       </section>
       
       {/* {Advertisment} */}
-      <section className="py-8">
-        <div className="mx-auto px-4">
+      <section className="py-8 w-full">
+        <div className="w-full">
           <img
             src="/images/advertisment.jpg"
             alt="Advertisement"
-            className="w-full rounded-lg shadow-lg"
+            className="w-full h-auto object-cover rounded"
           />
         </div>
       </section>
 
       {/* Limited Time Deals - Responsive Grid */}
-      <section className="py-12 text-center bg-yellow-100">
+      <section className="py-12 text-center bg-yellow-100 mt-10">
         <h2 className="text-2xl font-bold mb-4">Limited Time Deals</h2>
 
         {/* Enhanced Countdown Timer */}
@@ -338,7 +338,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 px-4 ">
           {products.slice(0, 5).map((product) => {
             return (
-              <div key={product.id} className="border p-4 rounded-lg shadow-md relative bg-white">
+              <div key={product.id} className=" p-4 shadow-md relative bg-white">
                 {/* Discount Badge */}
                 {product.discount && (
                   <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
@@ -350,9 +350,9 @@ export default function Home() {
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={250}
+                  width={200}
                   height={200}
-                  className="w-full h-40 object-contain rounded-md cursor-pointer"
+                  className="w-full h-40 object-contain cursor-pointer"
                   onClick={() => router.push(`/product/${product.id}`)}
                 />
                 

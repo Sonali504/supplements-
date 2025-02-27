@@ -123,7 +123,7 @@ export default function ProductList() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => ( // <-- 'product' is defined here
-                <div key={product.id} className="relative p-3 border rounded-lg shadow-lg bg-white hover:shadow-xl transition">
+                <div key={product.id} className="relative p-3 border shadow-lg bg-white hover:shadow-xl transition">
                   {product.discount && (
                     <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs font-semibold rounded">
                       {product.discount} OFF
