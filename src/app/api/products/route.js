@@ -328,7 +328,25 @@ export async function GET() {
             "/images/protein19.jpg",
             "/images/protein19.jpg"
           ]
-        }
+        },
+        {
+          "id": 20,
+          "name": "Nutrella Sports",
+          "price": 2190,
+          "oldPrice": 4600,
+          "discount": "27%",
+          "image": "/images/protein20.jpg",
+          "category": "Gainers",
+          "rating": 3,
+          "description": "NUTRELA Sports Patanjali Premium Whey Isolate Protein Powder - 1kg Vanilla Ice Cream is a high-quality protein supplement designed to support muscle recovery, strength, and overall athletic performance. With its fast-absorbing whey isolate formula, it delivers essential amino acids to help build lean muscle and enhance post-workout recovery. This premium blend is ideal for fitness enthusiasts and athletes looking for a clean, effective protein source. Enjoy the smooth texture and delicious Vanilla Ice Cream flavor while fueling your body with the nutrients it needs to perform at its best.",
+          "shipping": "Ships within 2-4 business days.",
+          "returns": "No returns on opened items.",
+          "thumbnails": [
+          "/images/protein20.jpg",
+          "/images/protein20.jpg",
+          "/images/protein20.jpg"
+        ]
+      }
     ];
   
     return Response.json(products);

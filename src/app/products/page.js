@@ -120,7 +120,7 @@ export default function ProductList() {
             className="border p-2 w-full rounded-md mb-4"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => ( // <-- 'product' is defined here
                 <div key={product.id} className="relative p-3 border shadow-lg bg-white hover:shadow-xl transition">
@@ -171,9 +171,9 @@ export default function ProductList() {
                       addToCart(product); // <-- Ensure addToCart function exists
                       router.push("/cart");
                     }}
-                    className="mt-2 w-full flex items-center justify-center bg-yellow-600 text-white px-3 py-2 rounded-md hover:bg-yellow-700 transition"
+                    className="mt-2 w-full flex items-center justify-center border bg-white text-black px-3 py-2 rounded-md hover:bg-yellow-700 hover:text-white transition"
                   >
-                    <FaShoppingCart className="mr-2" /> Add to Cart
+                     Add to Cart<FaShoppingCart className="mr-2" />
                   </button>
                 </div>
               ))

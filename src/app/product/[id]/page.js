@@ -27,7 +27,7 @@ export default function ProductDetail({ params }) {
         }
         // Select 4 random products excluding the current product
         const filteredProducts = data.filter((p) => p.id !== productId);
-        const randomProducts = filteredProducts.sort(() => 0.5 - Math.random()).slice(0, 4);
+        const randomProducts = filteredProducts.sort(() => 0.5 - Math.random()).slice(0, 6);
         setRelatedProducts(randomProducts);
 
         setLoading(false);
@@ -114,9 +114,9 @@ export default function ProductDetail({ params }) {
 
       {/* Customers Also Bought Section */}
       {relatedProducts.length > 0 && (
-        <div className="max-w-7xl mx-auto p-6 mt-10">
+        <div className="max-w-8xl mx-auto p-6 mt-10">
           <h3 className="text-2xl font-bold mb-5">Customers Also Bought</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 gap-4">
             {relatedProducts.map((related) => (
               <div
                 key={related.id}
@@ -147,7 +147,7 @@ export default function ProductDetail({ params }) {
                 </div>
 
                 {/* Add to Cart Button */}
-                <button onClick={() => { addToCart(related); router.push("/cart"); }} className="mt-4 px-4 py-2 bg-yellow-600 text-white rounded-lg w-full hover:bg-yellow-700 transition">
+                <button onClick={() => { addToCart(related); router.push("/cart"); }} className="mt-4 px-4 py-2 bg-white text-black border rounded-lg w-full hover:bg-yellow-700 hover:text-white transition">
                   Add to Cart
                 </button>
               </div>

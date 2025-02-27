@@ -66,6 +66,7 @@ export default function Home() {
     updateCountdown();
     return () => clearInterval(timer);
   }, []);
+
   const testimonials = [
     {
       id: 1,
@@ -112,6 +113,8 @@ export default function Home() {
     { name: "Alpino", image: "/images/logo1.jpg" },
     { name: "Nourish Organics", image: "/images/logo2.jpg" },
   ];
+
+  
 
 
   return (
@@ -212,7 +215,7 @@ export default function Home() {
                       addToCart(product);
                       router.push("/cart");
                     }}
-                    className="mt-3 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
+                    className="mt-3 w-full px-4 py-2 bg-white text-black rounded-md border hover:bg-yellow-700 hover:text-white"
                   >
                     Add to Cart
                   </button>
@@ -276,9 +279,9 @@ export default function Home() {
             ? "Featured Products"
             : `${selectedCategory} Products`}
         </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
-          {filteredProducts.slice(0, 8).length > 0 ? (
-            filteredProducts.slice(0, 8).map((product) => (
+        <div className="max-w-8xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4 justify-items-center p-4">
+          {filteredProducts.slice(0, 12).length > 0 ? (
+            filteredProducts.slice(0, 12).map((product) => (
               <div
                 key={product.id}
                 className="relative border p-4  shadow-md w-full max-w-xs"
@@ -319,16 +322,6 @@ export default function Home() {
                 <div className="flex items-center mt-1">
                   <span className="text-yellow-500">⭐ {product.rating}</span>
                 </div>
-                {/* Add to Cart Button */}
-                <button
-                  onClick={() => {
-                    addToCart(product);
-                    router.push("/cart");
-                  }}
-                  className="mt-3 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
-                >
-                  Add to Cart
-                </button>
               </div>
             ))
           ) : (
@@ -360,8 +353,8 @@ export default function Home() {
         </div>
 
         {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 px-4 ">
-          {products.slice(0, 5).map((product) => {
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6 px-4 ">
+          {products.slice(0, 6).map((product) => {
             return (
               <div key={product.id} className=" p-4 shadow-md relative bg-white">
                 {/* Discount Badge */}
@@ -405,7 +398,7 @@ export default function Home() {
                     addToCart(product);
                     router.push("/cart");
                   }}
-                  className="mt-3 w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
+                  className="mt-3 w-full px-4 py-2 bg-white border text-black rounded-md hover:bg-yellow-700 hover:text-white"
                 >
                   Add to Cart
                 </button>
@@ -431,11 +424,11 @@ export default function Home() {
       </div>
     </section>
 
-      {/* {What client says} */}
-      <section className="py-12 mt-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Testimonials</h2>
-        </div>
+    {/* {What client says} */}
+    <section className="py-12 mt-10">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-6">Testimonials</h2>
+      </div>
 
         <Swiper
           slidesPerView={1}
@@ -469,8 +462,8 @@ export default function Home() {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
-      </section>
+      </Swiper>
+    </section>
     </main>
   );
 }
