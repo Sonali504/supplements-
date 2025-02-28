@@ -118,9 +118,9 @@ export default function Home() {
 
 
   return (
-    <main className="container mx-auto ">
+    <main className="container mx-auto">
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center h-screen bg-gradient-to-b from-yellow-100 to-white px-6 ">
+      <section className="relative flex items-center justify-center h-screen bg-white ">
         <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 items-center gap-8 mt-20">
           {/* Left Side - Text Content */}
           <div className="text-center md:text-left">

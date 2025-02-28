@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 p-2 bg-transparent">
+    <nav className="sticky top-0 left-0 w-full z-50 p-2 bg-white">
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center ">
         
         {/* Left - Hamburger & Logo */}
